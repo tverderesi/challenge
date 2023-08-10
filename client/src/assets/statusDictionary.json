@@ -1,0 +1,44 @@
+{
+  "1": {
+    "name": "Planejado",
+    "status": "info",
+    "icon": "assignment_add",
+    "symbolClasses": ["small"]
+  },
+  "2": {
+    "name": "Em andamento",
+    "status": "neutral",
+    "icon": "assignment",
+    "symbolClasses": ["small"]
+  },
+  "3": {
+    "name": "Finalizado",
+    "status": "success",
+    "icon": "assignment_turned_in",
+    "symbolClasses": ["small"]
+  },
+  "4": {
+    "name": "Cancelado",
+    "status": "error",
+    "icon": "assignment_late",
+    "symbolClasses": ["small", "heavy"]
+  },
+  "5": {
+    "name": "Aprovado",
+    "status": "success",
+    "icon": "done",
+    "symbolClasses": ["heavy"]
+  },
+  "6": {
+    "name": "Reprovado",
+    "status": "error",
+    "icon": "close",
+    "symbolClasses": ["heavy"]
+  },
+  "7": {
+    "name": "Incompleto",
+    "status": "warning",
+    "icon": "assignment_late",
+    "symbolClasses": ["small", "heavy"]
+  }
+}

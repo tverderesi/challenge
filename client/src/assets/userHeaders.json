@@ -1,0 +1,22 @@
+[
+  {
+    "id": "deletedAt",
+    "name": "status",
+    "type": "bool",
+    "success": null,
+    "boolTrue": "Ativo",
+    "boolFalse": "Inativo"
+  },
+  { "id": "fullName", "name": "Nome", "type": "basic" },
+  { "id": "username", "name": "usuário", "type": "basic" },
+  { "id": "email", "name": "E-mail", "type": "basic" },
+  { "id": "cpf", "name": "CPF", "type": "mask", "mask": "maskCPF" },
+  {
+    "id": "role",
+    "name": "tipo",
+    "type": "mask",
+    "mask": "getRoleName"
+  },
+  { "id": "createdAt", "name": "Criado em", "type": "date" },
+  { "id": "updatedAt", "name": "Atualizado em", "type": "date" }
+]

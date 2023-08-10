@@ -1,0 +1,63 @@
+{
+  "name": "react-client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@apollo/client": "^3.7.16",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.36",
+    "@types/react": "^18.2.13",
+    "@types/react-dom": "^18.2.6",
+    "axios": "^1.4.0",
+    "face-api.js": "^0.22.2",
+    "jose": "^4.14.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-relay": "^15.0.0",
+    "react-router-dom": "^6.13.0",
+    "react-scripts": "5.0.1",
+    "recharts": "^2.7.2",
+    "relay-runtime": "^15.0.0",
+    "slugify": "^1.6.6",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "relay-compiler --validate && react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "relay": "relay-compiler"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@faker-js/faker": "^8.0.2",
+    "@types/react-relay": "^14.1.4",
+    "@types/relay-runtime": "^14.1.12",
+    "babel-plugin-relay": "^15.0.0",
+    "daisyui": "^3.1.5",
+    "relay-compiler": "^15.0.0",
+    "tailwindcss": "^3.3.2"
+  }
+}

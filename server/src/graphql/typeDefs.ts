@@ -1,0 +1,156 @@
+  export const typeDefs = `#graphql
+
+  "The token type. This type is exposed to the client as a JSON Web Token. The token is used to authenticate the user, and also provides information regarding the user's role and name."
+    type Token {
+      token: String!
+    }
+
+  "The three queryable User date fields, createdAt, updatedAt and deletedAt."
+    enum DateField {
+      createdAt
+      updatedAt
+      deletedAt
+    }
+
+    "The two possible sort directions, ASC and DESC, which are semantic names for 1 and -1 respectively."
+    enum SortDirection {
+
+    ASC
+    DESC
+    }
+
+  "The three possible user roles, ADMIN, INSTRUCTOR and USER. Admins can do everything, instructors can create and edit courses and users can only view courses."
+    enum Role {
+      
+      ADMIN
+      INSTRUCTOR
+      USER
+    }
+
+  "The three possible user statuses, ACTIVE, INACTIVE and ALL. Active means that the user is not deleted, inactive means that the user is deleted and all means that the query will return both active and inactive users."
+    enum Status {
+      
+      ACTIVE  
+      INACTIVE
+      ALL
+    }
+    "User type. This type is exposed to the client."
+    type User {
+      id: ID!
+      username: String!
+      email: String!
+      fullName: String!
+      cpf: String!
+      role: Role!
+      createdAt: String!
+      updatedAt: String!
+      deletedAt: String
+      userCount: Int
+    }
+
+  "User type with password. This type is used internally and should not be exposed to the client."
+    type UserWithPassword {
+      id: ID!
+      username: String!
+      email: String!
+      "Full name of the user, it can be composed of multiple names and last names."
+      fullName: String!
+      "Password hashed with bcrypt."
+      passwordHash: String!
+      "CPF is the Brazilian national identification number, it is unique for each person. It contains 11 digits and can be formatted with dots and dashes or without them."
+      cpf: String!
+      "The user role. It can be ADMIN, INSTRUCTOR or USER."
+      role: Role!
+      createdAt: String!
+      updatedAt: String!
+      deletedAt: String
+      }
+
+    "Input for registering a new user. All fields are required."
+    input UserInput {
+      username: String
+      email: String
+      fullName: String
+      "CPF is the Brazilian national identification number, it is unique for each person. It contains 11 digits and can be formatted with dots and dashes or without them."
+      cpf: String
+      "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number and one special character."
+      password: String
+      "This field is not stored in the database, it is only used to confirm that the user typed the password correctly."
+      confirmPassword: String
+      role: Role
+    } 
+
+    "Query for finding and filtering and single or multiple users. It accepts all fields and all operators."
+    input QueryUser {
+      id: ID
+      username: String
+      email: String
+      "Full name of the user, it can be composed of multiple names and last names."
+      fullName: String
+      "CPF is the Brazilian national identification number, it is unique for each person. It contains 11 digits and can be formatted with dots and dashes or without them."
+      cpf: String
+      role: Role
+      "Select the type of user to return: ACTIVE, INACTIVE or ALL."
+      userStatus: Status
+      createdAt: String
+      updatedAt: String
+      deletedAt: String
+      "Select the date field to filter by."
+      dateField: DateField
+      startDate: String
+      endDate: String
+      page: String
+      limit: String
+      "Select the field to sort by."
+      sortField: String
+      order: SortDirection}
+  
+
+  "Input for logging in a user."
+    input UserLoginInput { 
+    "Username or email of the user."
+      input: String!
+      password: String!
+    }
+  "Input for updating a user. All fields besides ID are optional, so that the user can update only the fields that they want to update."
+    input UserUpdateInput {
+      "This field is required because it is used to find the user to update, regardless of other info."
+      id: ID!
+      username: String
+      email: String
+      fullName: String
+      cpf: String
+      role: Role
+    }
+
+    
+
+    type Query {
+      "Returns a list of users. It Has support for pagination, sorting and date filtering. If no options are provided, it will return all users. If no pagination options are provided, it will return the first 10 users. If no sorting options are provided, it will sort by createdAt in descending order."
+      users(queryUser: QueryUser): [User]
+      "Returns a single user, based on an input ID."
+      user(id: ID!): User
+      "Returns the number of users, based on the active status."
+      userCount(queryUser: QueryUser): Int
+    }
+
+    type Mutation {
+      "Registers a new user and returns a JWT."
+      register(userInput: UserInput): Token!
+
+      "Logs in a user and returns a JWT."
+      login(loginInput: UserLoginInput): Token!
+
+      "Updates a user information and returns a Success message."
+      updateUser(userInput: UserUpdateInput): String!
+
+      "Soft deletes a user by setting the deletedAt field."
+      softDeleteUser(_id: ID!): String
+
+      "Hard deletes a user by removing it from the database."
+      hardDeleteUser(_id: ID!): String
+
+      "Restores a soft deleted user by setting the deletedAt field to null."
+      restoreUser(_id: ID!): String
+    }
+  `;
