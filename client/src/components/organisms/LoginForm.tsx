@@ -29,10 +29,7 @@ export default function LoginForm() {
   }
 
   // Custom hook for login form, returns onChange, onSubmit and value. It tracks the form state.
-  const { onChange, onSubmit, value } = useFormControl<ILoginFormState>(
-    initialState,
-    handleSubmit
-  );
+  const { onChange, onSubmit, value } = useFormControl<ILoginFormState>(initialState, handleSubmit);
 
   const [login, { loading }] = useMutation(LOGIN_USER, {
     update(
@@ -69,17 +66,14 @@ export default function LoginForm() {
             errors ? "shake-horizontal" : ""
           }`}
         >
-          <h2 className="card-title text-3xl mb-10">QTeorico</h2>
+          <h2 className="card-title text-3xl mb-10">People</h2>
           {loading ? (
             <div className="w-full h-full absolute flex flex-col items-center top-0 left-0 gap-16 justify-center bg-base-200/90 backdrop-blur rounded-box">
               <span className="loading loading-ring w-16"></span>
               <span className="text-3xl font-semibold">Entrando...</span>
             </div>
           ) : null}
-          <form
-            className="form-control w-full max-w-xs gap-5"
-            onSubmit={onSubmit}
-          >
+          <form className="form-control w-full max-w-xs gap-5" onSubmit={onSubmit}>
             <input
               name="input"
               type="text"
@@ -96,11 +90,7 @@ export default function LoginForm() {
               aria-label="Senha"
               onChange={onChange}
             />
-            <input
-              type="submit"
-              value="Entrar"
-              className="btn btn-primary"
-            ></input>
+            <input type="submit" value="Entrar" className="btn btn-primary"></input>
           </form>
         </div>
       </div>

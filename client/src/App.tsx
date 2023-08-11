@@ -1,9 +1,9 @@
 import { AppContextProvider } from "./context/AppContext";
 import AppRouter from "./routes/AppRouter";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-
+console.log(process.env);
 export const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri: process.env.REACT_APP_GRAPHQL_URI,
   cache: new InMemoryCache(),
 });
 

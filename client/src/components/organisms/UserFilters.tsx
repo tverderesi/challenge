@@ -16,10 +16,7 @@ export const UserFilters = ({ error, onSubmit, onReset, onChange, value }) => {
           <div className="flex flex-row justify-between">
             <TitleWithIcon name="Filtros" icon="filter_alt" />
             <div className=" join divide-x- border-info-content">
-              <Link
-                to={"/novo-usuario"}
-                className="btn btn-sm btn-success join-item"
-              >
+              <Link to={"/novo-usuario"} className="btn btn-sm btn-success join-item">
                 <label className="material-symbols-outlined">add</label>
                 Novo Usuário
               </Link>

@@ -1,5 +1,5 @@
 /**
- * @description This function is responsible for validating if a given role is valid, based on the available roles (ADMIN, USER, INSTRUCTOR).
+ * @description This function is responsible for validating if a given role is valid, based on the available roles (ADMIN, STUDENT, TEACHER).
  * @param {String} role - The role to be validated
  * @returns {Array} - An array containing the errors
  * @async
@@ -18,9 +18,9 @@
 export async function validateRole(role: string) {
   const errors: string[] = [];
 
-  if (role !== "ADMIN" && role !== "USER" && role !== "INSTRUCTOR") {
+  if (role !== "ADMIN" && role !== "STUDENT" && role !== "TEACHER") {
     errors.push(
-      "Tipo de usuário inválido! O tipo de Usuário deve ser 'ADMIN', 'USER' ou 'INSTRUCTOR'"
+      "Tipo de usuário inválido! O tipo de Usuário deve ser 'ADMIN', 'STUDENT' ou 'TEACHER'"
     );
   }
 

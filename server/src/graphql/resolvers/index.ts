@@ -1,4 +1,4 @@
-import { userResolver } from "./userResolver.js";
+import { userResolver } from "./userResolver";
 
 const resolvers = {
   Query: { ...userResolver.Query },

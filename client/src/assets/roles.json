@@ -1,5 +1,5 @@
 {
   "ADMIN": "Administrador",
-  "INSTRUCTOR": "Instrutor",
-  "USER": "Usuário"
+  "TEACHER": "Professor",
+  "STUDENT": "Estudante"
 }

@@ -9,11 +9,7 @@ export default function Layout() {
   const { role } = useContext(AppContext);
   const valid = verifyJWT();
   const linkList: ILinkWithIcon[] =
-    role === "ADMIN"
-      ? links.ADMIN
-      : role === "INSTRUCTOR"
-      ? links.INSTRUCTOR
-      : links.USER;
+    role === "ADMIN" ? links.ADMIN : role === "TEACHER" ? links.TEACHER : links.STUDENT;
 
   return (
     <div className="min-h-screen w-screen bg-base-100 overflow-y-hidden">

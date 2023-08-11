@@ -5,7 +5,7 @@ export interface IUser {
   email: string;
   password?: string;
   cpf: string;
-  role: "ADMIN" | "INSTRUCTOR" | "USER";
+  role: "ADMIN" | "TEACHER" | "STUDENT";
   createdAt?: string;
   updatedAt?: string;
   deletedAt?: string;

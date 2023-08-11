@@ -5,11 +5,7 @@ import { SingleMenuItem } from "../atoms/SingleMenuItem";
 import { IDropdownLink } from "../../interfaces/IDropdownLink";
 import { ILinkWithIcon } from "../../interfaces/ILinkWithIcon";
 
-export default function Navbar({
-  links,
-}: {
-  links: (IDropdownLink | ILinkWithIcon)[];
-}) {
+export default function Navbar({ links }: { links: (IDropdownLink | ILinkWithIcon)[] }) {
   return (
     <div className="navbar bg-base-300 h-20 fixed z-10 lg:shadow-lg">
       <div className="navbar-start">
@@ -47,16 +43,14 @@ export default function Navbar({
               const typedLink = link as ILinkWithIcon;
               return (
                 <li key={index} className="font-semibold">
-                  <Link to={slugify(typedLink.name, { lower: true })}>
-                    {typedLink.name}
-                  </Link>
+                  <Link to={slugify(typedLink.name, { lower: true })}>{typedLink.name}</Link>
                 </li>
               );
             })}
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost text-xl normal-case">
-          QTeorico
+          People
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -77,9 +71,7 @@ export default function Navbar({
               return (
                 <li key={index} tabIndex={tabIndex - 1}>
                   <details>
-                    <summary className="active:bg-transparent">
-                      {typedLink.parent}
-                    </summary>
+                    <summary className="active:bg-transparent">{typedLink.parent}</summary>
                     <ul className="p-2">
                       {typedLink.items.map((item, index2) => (
                         <li key={index + "." + index2}>
@@ -93,11 +85,7 @@ export default function Navbar({
             }
 
             return (
-              <li
-                key={index}
-                tabIndex={tabIndex - 1}
-                className="btn btn-active"
-              >
+              <li key={index} tabIndex={tabIndex - 1} className="btn btn-active">
                 <SingleMenuItem {...link} />
               </li>
             );

@@ -1,3 +1,4 @@
+import { IQueryUser } from "../types/IUser.js";
 import { applyRegexFilter } from "./applyRegexFilter.js";
 
 /**
@@ -11,7 +12,11 @@ import { applyRegexFilter } from "./applyRegexFilter.js";
  * @throws {GraphQLError} - Throws an error if the userStatus argument is invalid
  */
 
-export const queryBuilder = ({ queryUser: { queryUser } }) => {
+export const queryBuilder = ({
+  queryUser: { queryUser },
+}: {
+  queryUser: { queryUser: IQueryUser };
+}) => {
   const query: any = {};
 
   const queryFields = ["id", "username", "email", "fullName", "cpf", "role"];

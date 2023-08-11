@@ -1,4 +1,4 @@
-  export const typeDefs = `#graphql
+export const typeDefs = `#graphql
 
   "The token type. This type is exposed to the client as a JSON Web Token. The token is used to authenticate the user, and also provides information regarding the user's role and name."
     type Token {
@@ -19,17 +19,15 @@
     DESC
     }
 
-  "The three possible user roles, ADMIN, INSTRUCTOR and USER. Admins can do everything, instructors can create and edit courses and users can only view courses."
+  "The three possible user roles, ADMIN, TEACHER, STUDENT. Admins can do everything, Teachers can create and edit courses and users can only view courses."
     enum Role {
-      
       ADMIN
-      INSTRUCTOR
-      USER
+      TEACHER
+      STUDENT
     }
 
   "The three possible user statuses, ACTIVE, INACTIVE and ALL. Active means that the user is not deleted, inactive means that the user is deleted and all means that the query will return both active and inactive users."
     enum Status {
-      
       ACTIVE  
       INACTIVE
       ALL
@@ -59,7 +57,7 @@
       passwordHash: String!
       "CPF is the Brazilian national identification number, it is unique for each person. It contains 11 digits and can be formatted with dots and dashes or without them."
       cpf: String!
-      "The user role. It can be ADMIN, INSTRUCTOR or USER."
+      "The user role. It can be ADMIN, TEACHER or STUDENT."
       role: Role!
       createdAt: String!
       updatedAt: String!

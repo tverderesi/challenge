@@ -1,19 +1,5 @@
 {
-  "ADMIN": [
-    { "name": "Exames Teóricos", "icon": "quiz" },
-    { "name": "Lista de Usuários", "icon": "group" },
-    { "name": "Banco de Questões", "icon": "book" },
-    { "name": "Marcar Exame", "icon": "schedule" },
-    { "name": "Bloquear Exame", "icon": "block" }
-  ],
-  "USER": [
-    { "name": "Exames Teóricos", "icon": "quiz" },
-    { "name": "Marcar Exame", "icon": "schedule" }
-  ],
-  "INSTRUCTOR": [
-    { "name": "Exames Teóricos", "icon": "quiz" },
-    { "name": "Lista de Candidatos", "icon": "group" },
-    { "name": "Banco de Questões", "icon": "book" },
-    { "name": "Marcar Exame", "icon": "schedule" }
-  ]
+  "ADMIN": [{ "name": "Lista de Usuários", "icon": "group" }],
+  "STUDENT": [{ "name": "Lista de Usuários", "icon": "group" }],
+  "TEACHER": [{ "name": "Lista de Usuários", "icon": "group" }]
 }

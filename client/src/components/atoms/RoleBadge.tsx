@@ -3,7 +3,7 @@ import roles from "../../assets/roles.json";
 export function RoleBadge({ data }) {
   const roleColors = {
     ADMIN: "bg-stone-600",
-    INSTRUCTOR: "bg-orange-700",
+    TEACHER: "bg-orange-700",
     USER: "bg-rose-900",
   };
   return (

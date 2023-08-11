@@ -1,16 +1,7 @@
-export function TextInput({
-  placeholder,
-  name,
-  onChange,
-  label,
-  disabled = false,
-}) {
+export function TextInput({ placeholder, name, onChange, label, disabled = false }) {
   return (
     <div className="form-control">
-      <label
-        htmlFor={name}
-        className="label font-semibold text-base capitalize"
-      >
+      <label htmlFor={name} className="label font-semibold text-base capitalize">
         {label}
       </label>
 

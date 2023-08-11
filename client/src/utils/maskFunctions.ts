@@ -6,8 +6,8 @@ export const maskFunctions = {
   getRoleName: (role) => {
     const roles = {
       ADMIN: "Administrador",
-      INSTRUCTOR: "Instrutor",
-      USER: "Estudante",
+      TEACHER: "Professor",
+      STUDENT: "Estudante",
     };
     return roles[role];
   },
