@@ -1,3 +1,5 @@
+import { IQueryUser } from "../types/IUser";
+
 /**
  * @description Applies a regex filter to the query object
  * @param query The query object
@@ -5,7 +7,7 @@
  * @param value The value to be used in the regex filter
  * @returns {Object} - The query object
  */
-export const applyRegexFilter = (query: any, field: string, value: string) => {
+export const applyRegexFilter = (query: any, field: string, value: keyof IQueryUser) => {
   if (value) {
     query[field] = { $regex: value, $options: "i" };
   }

@@ -1,5 +1,5 @@
-import { IQueryUser } from "../types/IUser.js";
-import { applyRegexFilter } from "./applyRegexFilter.js";
+import { IQueryUser } from "../types/IUser";
+import { applyRegexFilter } from "./applyRegexFilter";
 
 /**
  * @description Builds the query object based on the provided arguments
@@ -16,7 +16,7 @@ export const queryBuilder = ({
   queryUser: { queryUser },
 }: {
   queryUser: { queryUser: IQueryUser };
-}) => {
+}): object => {
   const query: any = {};
 
   const queryFields = ["id", "username", "email", "fullName", "cpf", "role"];
