@@ -1,4 +1,3 @@
-import { RelayEnvironment } from "./RelayEnvironment";
 import { AppContextProvider } from "./context/AppContext";
 import Users from "./pages/A";
 import AppRouter from "./routes/AppRouter";
@@ -10,7 +9,6 @@ export const client = new ApolloClient({
 });
 
 function App() {
-  console.log(RelayEnvironment);
   return (
     <ApolloProvider client={client}>
       <Users />

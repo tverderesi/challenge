@@ -14,10 +14,10 @@ export default function AppRouter() {
         <Route path="/" element={<Layout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<AuthRoute />}>
-            <Route path="/" element={<Navigate to="/lista-de-usuarios" />} />
-            <Route path="/novo-usuario" element={<AddUser />} />
-            <Route path="/lista-de-usuarios" element={<Users />} />
-            <Route path="/usuario/:id" element={<User />} />
+            <Route path="/" element={<Navigate to="/users" />} />
+            <Route path="/users/new" element={<AddUser />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/users/:id" element={<User />} />
           </Route>
         </Route>
         <Route path="*" element={<NotFound />} />
