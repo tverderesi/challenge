@@ -1,7 +1,7 @@
-import { gql } from "@apollo/client";
+import { graphql } from "react-relay";
 
-export const GET_USERS = gql`
-  query Users($queryUser: QueryUser) {
+export const queriesGetUsersQuery = graphql`
+  query queriesGetUsersQuery($queryUser: QueryUser) {
     users(queryUser: $queryUser) {
       id
       username
@@ -16,8 +16,8 @@ export const GET_USERS = gql`
   }
 `;
 
-export const GET_USER = gql`
-  query User($userId: ID!) {
+export const queriesGetUserQuery = graphql`
+  query queriesGetUserQuery($userId: ID!) {
     user(id: $userId) {
       id
       username
@@ -32,8 +32,8 @@ export const GET_USER = gql`
   }
 `;
 
-export const COUNT_USERS = gql`
-  query Query($queryUser: QueryUser) {
+export const queriesCountUsersQuery = graphql`
+  query queriesCountUsersQuery($queryUser: QueryUser) {
     userCount(queryUser: $queryUser)
   }
 `;

@@ -1,15 +1,19 @@
+import { RelayEnvironment } from "./RelayEnvironment";
 import { AppContextProvider } from "./context/AppContext";
+import Users from "./pages/A";
 import AppRouter from "./routes/AppRouter";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-console.log(process.env);
+
 export const client = new ApolloClient({
   uri: process.env.REACT_APP_GRAPHQL_URI,
   cache: new InMemoryCache(),
 });
 
 function App() {
+  console.log(RelayEnvironment);
   return (
     <ApolloProvider client={client}>
+      <Users />
       <AppContextProvider>
         <AppRouter />
       </AppContextProvider>

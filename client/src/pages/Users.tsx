@@ -1,3 +1,4 @@
+//@ts-ignore
 import { useContext, useEffect, useState } from "react";
 import { UserFilters } from "../components/organisms/UserFilters";
 import { PageHeader } from "../components/atoms/PageHeader";
@@ -22,10 +23,7 @@ export const Users = () => {
     order: "DESC",
   };
 
-  const { onChange, onReset, onSubmit, value } = useFormControl(
-    initialState,
-    () => {}
-  );
+  const { onChange, onReset, onSubmit, value } = useFormControl(initialState, () => {});
 
   useEffect(() => {
     dispatch({ type: "SET_USER_FILTERS", payload: value });
@@ -56,7 +54,7 @@ export const Users = () => {
   });
 
   return (
-    <div className="pb-0 lg:pb-10 w-screen lg:w-[95vw]">
+    <div className="w-screen pb-0 lg:w-[95vw] lg:pb-10">
       <PageHeader loading={loading} />
       <UserFilters
         error={error}
