@@ -17,18 +17,20 @@ const startServer = async () => {
     console.error("Missing MONGODB_URI environment variable.");
     process.exit(1);
   }
-  mongoose
-    .connect(process.env.MONGODB_URI)
-    .then(() => {
-      console.log("Connected to MongoDB");
-    })
-    .catch((error) => {
-      console.error("Failed to connect to MongoDB", error);
+
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("Connected to MongoDB");
+    const server = new ApolloServer({
+      typeDefs,
+      resolvers,
     });
 
-  const server = new ApolloServer({ typeDefs, resolvers });
-  await server.start();
-  app.use("/graphql", cors<cors.CorsRequest>(), bodyParser.json(), expressMiddleware(server));
+    await server.start();
+    app.use("/graphql", cors<cors.CorsRequest>(), bodyParser.json(), expressMiddleware(server));
+  } catch (error) {
+    console.error("Failed to connect to MongoDB", error);
+  }
 };
 
 startServer();

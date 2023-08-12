@@ -12,9 +12,8 @@
  * });
  * });
  * }
- * @todo Add a test for this function
  */
-//TODO: Add a test for this function
+
 export async function validateRole(role: string) {
   const errors: string[] = [];
 

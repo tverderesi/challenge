@@ -1,4 +1,4 @@
-import User from "../models/User.js";
+import User from "../models/User";
 
 /**
  * @description This function is responsible for validating if a given email is valid and unique.

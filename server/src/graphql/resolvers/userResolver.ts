@@ -1,15 +1,13 @@
 import bcrypt from "bcryptjs";
-import User from "../../models/User.js";
-import { validateRegisterInput } from "../../validators/registerInput.js";
+import User from "../../models/User";
+import { validateRegisterInput } from "../../validators/registerInput";
 import { GraphQLError } from "graphql";
-import { generateToken } from "../../utils/generateToken.js";
-import {
-  IUserInput,
-  IUserLoginInput,
-  IUserUpdateInput,
-} from "../../types/IUser.js";
+import { generateToken } from "../../utils/generateToken";
+import { IUserInput } from "../../@types/IUserInput";
 import { ObjectId } from "mongoose";
-import { queryBuilder } from "../../utils/queryBuilder.js";
+import { queryBuilder } from "../../utils/queryBuilder";
+import { IUserLoginInput } from "../../@types/IUserLogin";
+import { IUserUpdateInput } from "../../@types/IUserUpdateInput";
 
 export const userResolver = {
   Query: {
@@ -61,25 +59,9 @@ export const userResolver = {
      */
 
     register: async (_: any, { userInput }: { userInput: IUserInput }) => {
-      const {
-        username,
-        email,
-        fullName,
-        cpf,
-        password,
-        confirmPassword,
-        role,
-      } = userInput;
+      const { username, email, fullName, cpf, password, confirmPassword, role } = userInput;
 
-      if (
-        !username ||
-        !email ||
-        !fullName ||
-        !cpf ||
-        !password ||
-        !confirmPassword ||
-        !role
-      ) {
+      if (!username || !email || !fullName || !cpf || !password || !confirmPassword || !role) {
         throw new GraphQLError("Todos os campos são obrigatórios.", {
           extensions: { code: "BAD_USER_INPUT" },
         });
@@ -162,10 +144,7 @@ export const userResolver = {
      * @throws {GraphQLError} - If the user is not found.
      */
 
-    updateUser: async (
-      _: any,
-      { userInput }: { userInput: IUserUpdateInput }
-    ) => {
+    updateUser: async (_: any, { userInput }: { userInput: IUserUpdateInput }) => {
       const { id, ...updateData } = userInput;
       const filteredUpdateData = {};
       Object.keys(updateData).forEach((key) => {
@@ -212,18 +191,12 @@ export const userResolver = {
         })) === 1;
 
       if (isLastAdmin) {
-        throw new GraphQLError(
-          "Você não pode deletar o último administrador!",
-          {
-            extensions: { code: "BAD_USER_INPUT" },
-          }
-        );
+        throw new GraphQLError("Você não pode deletar o último administrador!", {
+          extensions: { code: "BAD_USER_INPUT" },
+        });
       }
 
-      const result = await User.updateOne(
-        { _id },
-        { deletedAt: new Date().toISOString() }
-      );
+      const result = await User.updateOne({ _id }, { deletedAt: new Date().toISOString() });
       if (result.modifiedCount === 0) {
         throw new GraphQLError("Usuário não encontrado!", {
           extensions: { code: "BAD_USER_INPUT" },
@@ -248,12 +221,9 @@ export const userResolver = {
           deletedAt: null,
         })) === 1;
       if (isLastAdmin) {
-        throw new GraphQLError(
-          "Você não pode deletar o último administrador!",
-          {
-            extensions: { code: "BAD_USER_INPUT" },
-          }
-        );
+        throw new GraphQLError("Você não pode deletar o último administrador!", {
+          extensions: { code: "BAD_USER_INPUT" },
+        });
       }
 
       const result = await User.deleteOne({ _id });

@@ -17,9 +17,6 @@
  * @todo Add test cases.
  */
 
-//TODO: Add a check to see if the CPF is valid in the Receita Federal database.
-//TODO: Add test cases.
-
 export function checkCPF(cpf: string): boolean {
   const cleanedCPF = cpf.replace(/\D/g, "");
 
@@ -29,17 +26,11 @@ export function checkCPF(cpf: string): boolean {
 
   const checkDigit = (array: number[]): number =>
     11 -
-    (array
-      .map((value, index) => value * (array.length + 1 - index))
-      .reduce((a, b) => a + b) %
-      11);
+    (array.map((value, index) => value * (array.length + 1 - index)).reduce((a, b) => a + b) % 11);
 
   const digits = Array.from(cleanedCPF, Number);
 
   const [digit1, digit2] = digits.slice(9);
 
-  return (
-    checkDigit(digits.slice(0, 9)) === digit1 &&
-    checkDigit(digits.slice(0, 10)) === digit2
-  );
+  return checkDigit(digits.slice(0, 9)) === digit1 && checkDigit(digits.slice(0, 10)) === digit2;
 }

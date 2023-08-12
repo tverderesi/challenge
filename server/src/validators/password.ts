@@ -17,16 +17,11 @@
  * @todo Add more password validation rules
  * @todo Add test cases to this function
  */
-//TODO: Add more password validation rules
-//TODO: Add test cases to this function
-export async function validatePassword(
-  password: string,
-  confirmPassword: string
-) {
+
+export async function validatePassword(password: string, confirmPassword: string) {
   const errors: string[] = [];
 
-  const pattern =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,26}$/;
+  const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,26}$/;
   if (!pattern.test(password)) {
     errors.push(
       "Senha inválida! A senha deve conter no mínimo 8 caracteres, uma letra maiúscula, uma letra minúscula, um número e um caractere especial."

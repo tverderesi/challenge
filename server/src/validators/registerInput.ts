@@ -1,11 +1,9 @@
-import { IUserInputValidator } from "../types/IUser";
-import { validateCPF } from "./cpf.js";
-import { validateEmail } from "./email.js";
-import { validatePassword } from "./password.js";
-import { validateRole } from "./role.js";
-import { validateUsername } from "./username.js";
-
-//TODO: Check Why can't I just reference the imports without add the .js extension?
+import { IUserInputValidator } from "../@types/IUserInputValidator";
+import { validateCPF } from "./cpf";
+import { validateEmail } from "./email";
+import { validatePassword } from "./password";
+import { validateRole } from "./role";
+import { validateUsername } from "./username";
 
 /**
  * @description This function is responsible for validating the user input when registering a new user.
@@ -21,9 +19,8 @@ import { validateUsername } from "./username.js";
  *  });
  */
 
-async function validateRegisterInput(
-  userInput: IUserInputValidator
-): Promise<string[]> {
+//TODO: Find a way to validate this function, since it means I will have to mock the User model, possibly using a mock database.
+async function validateRegisterInput(userInput: IUserInputValidator): Promise<string[]> {
   const errors: string[] = [];
   const { username, email, password, confirmPassword, cpf, role } = userInput;
 
@@ -33,13 +30,7 @@ async function validateRegisterInput(
   const cpfErrors = await validateCPF(cpf);
   const roleErrors = await validateRole(role);
 
-  errors.push(
-    ...usernameErrors,
-    ...emailErrors,
-    ...passwordErrors,
-    ...cpfErrors,
-    ...roleErrors
-  );
+  errors.push(...usernameErrors, ...emailErrors, ...passwordErrors, ...cpfErrors, ...roleErrors);
 
   return errors;
 }

@@ -1,4 +1,4 @@
-import User from "../models/User.js";
+import User from "../models/User";
 
 /**
  * @description This function is responsible for validating if a given username is valid.
@@ -17,8 +17,8 @@ import User from "../models/User.js";
  *
  * @todo Add a test for this function
  */
-//TODO: Add a test for this function
-export async function validateUsername(username) {
+
+export async function validateUsername(username: string) {
   const errors: string[] = [];
 
   const existingUser = await User.findOne({ username });

@@ -1,5 +1,5 @@
-import User from "../models/User.js";
-import { checkCPF } from "../utils/checkCPF.js";
+import User from "../models/User";
+import { checkCPF } from "../utils/checkCPF";
 
 /**
  * @description This function is responsible to validate the CPF, it checks if the CPF is valid using the @checkCPF function.
@@ -19,7 +19,7 @@ import { checkCPF } from "../utils/checkCPF.js";
  *
  */
 export async function validateCPF(cpf: string) {
-  const errors = [];
+  const errors: string[] = [];
 
   const existingUser = await User.findOne({ cpf });
   if (existingUser) {
