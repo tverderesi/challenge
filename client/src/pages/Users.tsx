@@ -8,14 +8,13 @@ import userHeaders from "../assets/userHeaders.json";
 import { Maybe } from "../interfaces/TMaybe";
 import { IUserFilterState } from "../interfaces/IUserFilterState";
 import { useQuery } from "@apollo/client";
-import { queriesCountUsersQuery, queriesGetUsersQuery } from "../graphql/queries";
 import { useFormControl } from "../hooks/useFormControl";
 import { useLazyLoadQuery } from "react-relay";
 import graphql from "babel-plugin-relay/macro"; // Use this import
 
 export const Users = () => {
-  const AGetUserQuery = graphql`
-    query AUsersQuery {
+  const UsersGetUserQuery = graphql`
+    query UsersgetUsersQuery {
       users(queryUser: {}) {
         id
         username
@@ -39,8 +38,12 @@ export const Users = () => {
     sortField: "createdAt",
     order: "DESC",
   };
-  const data: any = useLazyLoadQuery(AGetUserQuery, {});
-  dispatch({ type: "SET_USER_DATA", payload: data.users });
+  const data: any = useLazyLoadQuery(UsersGetUserQuery, {});
+
+  useEffect(() => {
+    dispatch({ type: "SET_USER_DATA", payload: data.users });
+  }, [data]);
+
   const { onChange, onReset, onSubmit, value } = useFormControl(initialState, () => {});
 
   useEffect(() => {
@@ -82,7 +85,8 @@ export const Users = () => {
         value={value}
       />
 
-      <Table headers={userHeaders} type="users" /> */}
+      */}
+      <Table headers={userHeaders} type="users" />
     </div>
   );
 };
